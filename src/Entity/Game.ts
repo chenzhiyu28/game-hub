@@ -4,7 +4,7 @@ export interface game {
     name: string;
     released: string | null;
     tba: boolean;
-    background_image: string | null;
+    background_image: string;
     rating: number;
     rating_top: number;
     ratings: object;
