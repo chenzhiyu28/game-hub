@@ -14,7 +14,7 @@ const App = () => {
     }}
       templateColumns={{
         base: "1fr", // 1 fraction (all space avaliable)
-        lg: "200px 1fr"
+        lg: "20% 1fr"
       }}
     >
       <GridItem area='nav'> 
