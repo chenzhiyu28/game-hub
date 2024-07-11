@@ -1,3 +1,5 @@
+import { Platform } from "./Platform";
+
 export interface game {
     id: number;
     slug: string;
@@ -16,5 +18,5 @@ export interface game {
     playtime: number;
     suggestion_count: number;
     updated: string;
-    platforms: string;
+    parent_platforms: { platform: Platform }[];
 }
