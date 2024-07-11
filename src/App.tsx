@@ -7,16 +7,22 @@ import GenerList from "./components/GenerList"
 const App = () => {
 
   return (
-    <Grid templateAreas={{
-      base: `"nav" "main"`,
-      lg: `"nav nav" "aside main"`
-    }}>
+    <Grid 
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`
+    }}
+      templateColumns={{
+        base: "1fr", // 1 fraction (all space avaliable)
+        lg: "200px 1fr"
+      }}
+    >
       <GridItem area='nav'> 
         <NavBar></NavBar>
       </GridItem>
 
       <Show above="lg">
-        <GridItem area='aside'>
+        <GridItem area='aside' padding={5}>
           <GenerList />
         </GridItem>
       </Show>
