@@ -11,7 +11,7 @@ interface FetchResponse<T> {
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
     const [data, setData] = useState<T[]>([]);
     const [error, setError] = useState(" ");
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
 
     const fetchData = () => {
         const controller = new AbortController();
@@ -22,6 +22,7 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
                 setError(err.message);
                 setLoading(false);
             })
+        setLoading(true);
         return () => controller.abort();
     }
 
