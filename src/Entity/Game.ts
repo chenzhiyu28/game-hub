@@ -1,3 +1,4 @@
+import { Genre } from "./Genre";
 import { Platform } from "./Platform";
 
 export interface game {
@@ -19,4 +20,5 @@ export interface game {
     suggestion_count: number;
     updated: string;
     parent_platforms: { platform: Platform }[];
+    genres: Genre[];
 }
