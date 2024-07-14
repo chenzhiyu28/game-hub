@@ -7,6 +7,7 @@ import { Genre } from "./Entity/Genre"
 import PlatformSelector from "./components/PlatformSelector"
 import { Platform } from "./Entity/Platform"
 import SortSelector from "./components/SortSelector"
+import SearchInput from "./components/SearchInput"
 
 
 export interface GameQuery{
@@ -43,7 +44,7 @@ const App = () => {
       }}
     >
       <GridItem area='nav'> 
-        <NavBar></NavBar>
+        <NavBar/>
       </GridItem>
 
       <Show above="lg">
