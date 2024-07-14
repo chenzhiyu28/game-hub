@@ -8,12 +8,19 @@ import PlatformSelector from "./components/PlatformSelector"
 import { Platform } from "./Entity/Platform"
 
 
+export interface GameQuery{
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 const App = () => {
-  const [chosenGenre, setGenre] = useState<Genre|null>(null)
-  const [selectedPlatform, setPlatform] = useState<Platform|null>(null)
+  //const [chosenGenre, setGenre] = useState<Genre|null>(null)
+  //const [selectedPlatform, setPlatform] = useState<Platform|null>(null)
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
+
 
   const onClickGenre = (genre: Genre) => {
-    setGenre(genre)
+    setGameQuery({...gameQuery, genre})
     console.log(genre)
   }
 
@@ -39,8 +46,10 @@ const App = () => {
       </Show>
 
       <GridItem area='main'>
-        <PlatformSelector selectedPlatfrom={selectedPlatform} onSelectPlatform={(platform) => setPlatform(platform)}/>
-        <GameGrid selectedGenre={chosenGenre} selectedPlatform={selectedPlatform}/>
+        <PlatformSelector 
+        selectedPlatfrom={gameQuery.platform} 
+        onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})}/>
+        <GameGrid gameQuery={gameQuery}/>
       </GridItem>
       
     </Grid>

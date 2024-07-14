@@ -1,13 +1,18 @@
 import { game } from "../Entity/Game";
 import useData from "./useData";
-import { Genre } from "../Entity/Genre";
-import { Platform } from "../Entity/Platform";
+import { GameQuery } from "../App";
 
-const useGames = (selectedGengre: Genre | null, selectedPlatform: Platform | null) =>
+const useGames = (gameQuery: GameQuery) =>
     useData<game>(
         "/games",
-        { params: { genres: selectedGengre?.id, platforms: selectedPlatform?.id } },
-        [selectedGengre?.id, selectedPlatform?.id]
+        {
+            params: {
+                genres: gameQuery.genre?.id,
+                platforms: gameQuery.platform?.id
+            }
+        },
+
+        [gameQuery]
     );
 
 export default useGames;
