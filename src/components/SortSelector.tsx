@@ -28,12 +28,9 @@ const SortSelector = ({onSelectSortOrder}: Prop) => {
       {false? <Spinner />: null}
       <MenuList>
         {sortOrders.map(order => 
-        <MenuItem 
-        key={order.value} 
-        value={order.value} 
-        onClick={() => {onSelectSortOrder(order.value); setSelector(order.label)}}
-        >
-            {order.label}
+        <MenuItem key={order.value} value={order.value} 
+        onClick={() => {onSelectSortOrder(order.value); setSelector(order.label)}}>
+          {order.label}
         </MenuItem>)}
       </MenuList>
     </Menu>

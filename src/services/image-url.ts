@@ -1,16 +1,20 @@
+import noImage from "../assets/noImage.png"
+
+
 interface Prop {
-    url: string;
+    imageUrl: string;
     width?: number;
     height?: number;
 }
 
 
-const getCroppedImageUrl = ({ url, width = 600, height = 400 }: Prop) => {
-    if (!url) return "";
+const getCroppedImageUrl = ({ imageUrl, width = 600, height = 400 }: Prop) => {
+    if (!imageUrl) return noImage;
 
     const target = "media/";
-    const index = url.indexOf(target) + target.length;
-    return url.slice(0, index) + "crop/" + width + "/" + height + "/" + url.slice(index);
+    const index = imageUrl.indexOf(target) + target.length;
+    return imageUrl.slice(0, index) + "crop/" + width + "/" + height + "/" + imageUrl.slice(index);
 }
 
 export default getCroppedImageUrl;
+
