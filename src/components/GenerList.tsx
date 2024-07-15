@@ -12,10 +12,12 @@ const GenerList = ({onSelectGenre}: Props) => {
   const {data, isLoading, error} = useGenres();
   const [selectedGenreID, setID] = useState<number>(-1);
 
+  if (error !== " ") return (<Text>error: {error}</Text>)
+
   return (
     <>
     {isLoading? <Spinner />: null}
-    {error === " "? null: <Text>error: {error}</Text>}
+    
     <Heading fontSize='2xl' marginBottom={3}>Genres</Heading>
     <List>
       {data.map(genre => 
