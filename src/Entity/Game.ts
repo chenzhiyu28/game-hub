@@ -17,7 +17,6 @@ export interface game {
     added_by_status: object;
     metacritic: number;
     playtime: number;
-    suggestion_count: number;
     updated: string;
     parent_platforms: { platform: Platform }[];
     genres: Genre[];
