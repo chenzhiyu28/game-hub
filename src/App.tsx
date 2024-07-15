@@ -7,13 +7,13 @@ import { Genre } from "./Entity/Genre"
 import PlatformSelector from "./components/PlatformSelector"
 import { Platform } from "./Entity/Platform"
 import SortSelector from "./components/SortSelector"
-import SearchInput from "./components/SearchInput"
 
 
 export interface GameQuery{
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string | null;
+  searchText: string;
 }
 
 const App = () => {
@@ -32,6 +32,11 @@ const App = () => {
     console.log(sortOrder)
   }
 
+  const onInputSearchText = (searchText: string) => {
+    setGameQuery({...gameQuery, searchText})
+    console.log(searchText)
+  }
+
   return (
     <Grid 
       templateAreas={{
@@ -44,7 +49,7 @@ const App = () => {
       }}
     >
       <GridItem area='nav'> 
-        <NavBar/>
+        <NavBar onSearch={(searchText) => onInputSearchText(searchText)}/>
       </GridItem>
 
       <Show above="lg">
