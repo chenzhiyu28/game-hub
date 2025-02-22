@@ -1,9 +1,9 @@
-import { game } from "../Entity/Game";
+import { Game } from "../Entity/Game";
 import useData from "./useData";
 import { GameQuery } from "../App";
 
 const useGames = (gameQuery: GameQuery) =>
-    useData<game>(
+    useData<Game>(
         "/games",
         {
             params: {
@@ -13,7 +13,6 @@ const useGames = (gameQuery: GameQuery) =>
                 search: gameQuery.searchText
             }
         },
-
         [gameQuery]
     );
 

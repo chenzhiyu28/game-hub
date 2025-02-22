@@ -1,7 +1,7 @@
 import { Genre } from "./Genre";
 import { Platform } from "./Platform";
 
-export interface game {
+export interface Game {
     id: number;
     slug: string;
     name: string;

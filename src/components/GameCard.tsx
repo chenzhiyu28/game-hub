@@ -1,4 +1,4 @@
-import { game } from '../Entity/Game'
+import { Game } from '../Entity/Game'
 import { Card, CardBody, HStack, Heading, Image } from '@chakra-ui/react'
 import PlatFormIconList from './PlatFormIconList';
 import CriticScore from './CriticScore';
@@ -6,7 +6,7 @@ import getCroppedImageUrl from '../services/image-url';
 import Emoji from './Emoji';
 
 interface Props {
-    game: game;
+    game: Game;
 }
 
 const GameCard = ({game}: Props) => {

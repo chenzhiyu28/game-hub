@@ -1,8 +1,8 @@
-import { game } from "./Game";
+import { Game } from "./Game";
 
 export interface fetchGameResponse {
     count: number;
     next: string;
     previous: string;
-    results: game[];
+    results: Game[];
 }
