@@ -2,6 +2,8 @@ import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
     count: number;
+    next: string | null;
+    previous: string | null;
     results: T[];
 }
 
@@ -38,5 +40,5 @@ export default function fetchData<T>(endpoint: string, requestConfig?: AxiosRequ
             key: "d5813d3966db44e9b6e25b42b7ba36ad"
         }
     }).get<FetchResponse<T>>(endpoint, { ...requestConfig }).
-        then(response => response.data.results);
+        then(response => response.data);
 }

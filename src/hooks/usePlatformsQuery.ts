@@ -9,7 +9,7 @@ export default function usePlatformsQuery() {
 
     const platformQuery = useQuery<Platform[], Error>({
         queryKey: ["platforms"],
-        queryFn: () => fetchData<Platform>("/platforms/lists/parents"),
+        queryFn: () => fetchData<Platform>("/platforms/lists/parents").then(res => res.results),
         staleTime: 60 * 60 * 1000, // 1 hour
         initialData: cachePlatforms
     })

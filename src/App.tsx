@@ -15,13 +15,14 @@ export interface GameQuery{
   platform: Platform | null;
   sortOrder: string | null;
   searchText: string;
+  page: number | null;
+  pageSize: number | null;
 }
 
 const App = () => {
   //const [chosenGenre, setGenre] = useState<Genre|null>(null)
   //const [selectedPlatform, setPlatform] = useState<Platform|null>(null)
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
-
 
   const onClickGenre = (genre: Genre) => {
     setGameQuery({...gameQuery, genre})

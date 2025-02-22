@@ -1,17 +1,18 @@
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { GameQuery } from '../App'
 import { Game } from '../Entity/Game'
-import fetchData from '../services/api-client'
+import fetchData, { FetchResponse } from '../services/api-client'
 
 export default function useGameQuery(gameQuery: GameQuery) {
 
-    function getGameParams(gameQuery: GameQuery) {
+    function getGameParams(gameQuery: GameQuery, pageParam: number) {
         return {
             params: {
                 genres: gameQuery.genre?.id,
                 parent_platforms: gameQuery.platform?.id,
                 ordering: gameQuery.sortOrder,
-                search: gameQuery.searchText
+                search: gameQuery.searchText,
+                page: pageParam,
             }
         }
     }
@@ -30,8 +31,13 @@ export default function useGameQuery(gameQuery: GameQuery) {
     //     ).then(response => response.data.results)
     // }
 
-    return useQuery<Game[], Error>({
+    return useInfiniteQuery<FetchResponse<Game>, Error>({
         queryKey: ['games', gameQuery],
-        queryFn: () => fetchData("/games", getGameParams(gameQuery)),
+        // pageParam 来自 useInifiniteQuery 的默认参数
+        queryFn: ({ pageParam = 1 }) => fetchData<Game>("/games", getGameParams(gameQuery, pageParam)),
+        keepPreviousData: true,
+        getNextPageParam: (lastPage, allPages) => {
+            return lastPage.next ? allPages.length + 1 : undefined
+        }
     })
 }
