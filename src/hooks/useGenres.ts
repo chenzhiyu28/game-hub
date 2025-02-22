@@ -5,7 +5,7 @@ import genres from "../data/genres";
 
 //const useGenres = () => useData<Genre>("/genres")
 const useGenres2 = () => ({
-    data: genres, isLoading: false, error: " "
+    data: genres, isloading: false, error: " "
 })
 
 export default useGenres2;
