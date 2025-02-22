@@ -1,6 +1,6 @@
-import { Game } from "../Entity/Game";
+import { Game } from "../../Entity/Game";
 import useData from "./useData";
-import { GameQuery } from "../App";
+import { GameQuery } from "../../App";
 
 const useGames = (gameQuery: GameQuery) =>
     useData<Game>(

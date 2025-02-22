@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import apiClient, { FetchResponse } from "../services/api-client";
-import { AxiosRequestConfig, CanceledError } from "axios";
+import { FetchResponse } from "../../services/api-client";
+import axios, { AxiosRequestConfig, CanceledError } from "axios";
 
 
-
+const apiClient = axios.create({
+    baseURL: "https://api.rawg.io/api",
+    params: {
+        key: "d5813d3966db44e9b6e25b42b7ba36ad"
+    }
+})
 
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
     const [data, setData] = useState<T[]>([]);
