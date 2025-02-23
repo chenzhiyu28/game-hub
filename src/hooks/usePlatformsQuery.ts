@@ -3,6 +3,7 @@ import { Platform } from '../Entity/Platform';
 import fetchData from '../services/api-client';
 
 import platforms from '../data/platforms';
+import ms from 'ms';
 
 export default function usePlatformsQuery() {
     const cachePlatforms: Platform[] = platforms;
@@ -10,7 +11,7 @@ export default function usePlatformsQuery() {
     const platformQuery = useQuery<Platform[], Error>({
         queryKey: ["platforms"],
         queryFn: () => fetchData<Platform>("/platforms/lists/parents").then(res => res.results),
-        staleTime: 60 * 60 * 1000, // 1 hour
+        staleTime: ms("24h"),
         initialData: cachePlatforms
     })
     return platformQuery;

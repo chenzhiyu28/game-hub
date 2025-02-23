@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Genre } from '../Entity/Genre';
 import genres from '../data/genres';
 import fetchData from '../services/api-client';
+import ms from 'ms';
 
 
 export default function useGenresQuery() {
@@ -12,7 +13,7 @@ export default function useGenresQuery() {
     const query = useQuery<Genre[], Error>({
         queryKey: ['genres'],
         queryFn: () => fetchData<Genre>('/genres').then(res => res.results),
-        staleTime: 24 * 60 * 60 * 1000, // 24 hours
+        staleTime: ms('24h'),
         initialData: cacheGenres
     })
 
