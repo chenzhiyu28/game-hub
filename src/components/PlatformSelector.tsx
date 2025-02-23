@@ -5,7 +5,7 @@ import usePlatformsQuery from "../hooks/usePlatformsQuery";
 
 interface Prop {
     onSelectPlatform: (platform: Platform) => void;
-    selectedPlatfrom: Platform|null;
+    selectedPlatfrom: string | undefined;
 }
 
 const PlatformSelector = ({onSelectPlatform, selectedPlatfrom}: Prop) => {
@@ -19,7 +19,7 @@ const PlatformSelector = ({onSelectPlatform, selectedPlatfrom}: Prop) => {
   
   return (
     <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />}>{selectedPlatfrom?selectedPlatfrom.name:"Platforms"}</MenuButton>
+      <MenuButton as={Button} rightIcon={<BsChevronDown />}>{selectedPlatfrom? selectedPlatfrom:"Platforms"}</MenuButton>
       {isLoading? <Spinner />: null}
       <MenuList>
         {data?.map(platform => 

@@ -8,11 +8,11 @@ interface Props {
 
 
 const GameHeading = ({gameQuery}: Props) => {
-  if (!(gameQuery.genre || gameQuery.platform)) 
+  if (!(gameQuery.genreID || gameQuery.platformID)) 
     return (<Heading>Games</Heading>)
 
-  let genreName = gameQuery.genre?.name? gameQuery.genre.name:"";
-  let platFormName = gameQuery.platform?.name? gameQuery.platform.name: "";
+  let genreName = gameQuery.genreName? gameQuery.genreName:"";
+  let platFormName = gameQuery.platformName? gameQuery.platformName: "";
   //const heading = `${gameQuery.genre?.name} ${gameQuery.platform?.name} Games`
 
   return (
