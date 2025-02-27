@@ -1,10 +1,11 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
-import { GameQuery } from '../App'
 import { Game } from '../Entity/Game'
 import fetchData, { FetchResponse } from '../services/api-client'
 import ms from 'ms'
+import useGameQueryStore, { GameQuery } from '../queryStore'
 
-export default function useGameQuery(gameQuery: GameQuery) {
+export default function useGameQuery() {
+    const gameQuery = useGameQueryStore(s => s.gameQuery);
 
     function getGameParams(gameQuery: GameQuery, pageParam: number) {
         return {
