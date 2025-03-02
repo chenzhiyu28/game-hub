@@ -33,6 +33,7 @@ const useGameQueryStore = create<GameQueryStore>(((set) => ({
     setOrder: (order: string) => set(
         (store) => ({ gameQuery: { ...store.gameQuery, sortOrder: order } })),
     // setSearchText: (text: string) => set((store) => ({gameQuery: { ...store.gameQuery, searchText: text }})),  // only update searchText
+    // return的literal object, 包含新的gameQuery对象, 来替换原来的gameQuery对象, 也会对ReactQuery querykey有影响
     setSearchText: (text: string) => set(
         () => ({ gameQuery: { searchText: text } })
     ),
