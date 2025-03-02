@@ -21,4 +21,6 @@ export interface Game {
     parent_platforms: { platform: Platform }[];
     genres: Genre[];
     ordering: string;
+    description: string;
+    description_raw: string;
 }

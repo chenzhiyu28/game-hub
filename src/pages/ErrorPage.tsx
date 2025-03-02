@@ -5,8 +5,6 @@ import { Box, Heading } from '@chakra-ui/react';
 const ErrorPage = () => {
   const error = useRouteError();
 
-
-
   return (
     <>
         <NavBar />
