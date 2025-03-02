@@ -6,6 +6,7 @@ const GameDetailPage = () => {
   const location = useLocation();
   const id: number = location.state.id;
 
+  // 重命名data 为game
   const {data: game, isLoading, error} = useGameDetailedQuery(id);
 
   {isLoading && <Spinner />}
@@ -14,8 +15,8 @@ const GameDetailPage = () => {
 
   return (
     <>
-      <Heading>{game?.name}</Heading>
-      <p>{game?.description_raw}</p>
+      <Heading>{game.name}</Heading>
+      <p>{game.description_raw}</p>
     </>
   )
 }

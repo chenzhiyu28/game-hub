@@ -6,7 +6,7 @@ import useGameQueryStore, { GameQuery } from '../queryStore'
 import APIClient from '../services/api-client'
 
 
-const apiClient = new APIClient<Game>("/games");
+const apiClient = new APIClient<Game>("games");
 
 export default function useGameQuery() {
     const gameQuery = useGameQueryStore(s => s.gameQuery);
@@ -40,7 +40,7 @@ export default function useGameQuery() {
     return useInfiniteQuery<FetchResponse<Game>, Error>({
         queryKey: ['games', gameQuery],
         // pageParam 来自 useInifiniteQuery 的默认参数
-        queryFn: ({ pageParam = 1 }) => apiClient.getAll(getGameParams(gameQuery, pageParam)),
+        queryFn: ({ pageParam = 1 }) => apiClient.getAll(getGameParams(gameQuery, pageParam)).then(response => response.data),
         keepPreviousData: true,
         getNextPageParam: (lastPage, allPages) => {
             return lastPage.next ? allPages.length + 1 : undefined
