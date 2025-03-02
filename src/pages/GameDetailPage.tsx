@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import useGameDetailedQuery from "../hooks/useGameDetailQuery";
 import { Heading, Spinner } from "@chakra-ui/react";
+import ExpandableComponent from "../components/expandableComponent";
 
 const GameDetailPage = () => {
   const location = useLocation();
@@ -12,11 +13,12 @@ const GameDetailPage = () => {
   {isLoading && <Spinner />}
 
   if (error || !game) throw error;
+  const description = game.description_raw;
 
   return (
     <>
       <Heading>{game.name}</Heading>
-      <p>{game.description_raw}</p>
+      <ExpandableComponent>{description}</ExpandableComponent>
     </>
   )
 }
