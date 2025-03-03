@@ -3,6 +3,7 @@ import useGameDetailedQuery from "../hooks/useGameDetailQuery";
 import { Heading, Spinner } from "@chakra-ui/react";
 import ExpandableComponent from "../components/ExpandableComponent";
 import GameAttributes from "../components/GameAttributes";
+import GameTrailer from "../components/GameTrailer";
 
 
 const GameDetailPage = () => {
@@ -17,13 +18,13 @@ const GameDetailPage = () => {
   // if (error || !game) throw error;
   if (error || !game) return error;
   
-  console.log(game);
   const description = game.description_raw;
   return (
     <>
       <Heading>{game.name}</Heading>
       <ExpandableComponent>{description}</ExpandableComponent>
       <GameAttributes game={game}/>
+      <GameTrailer id={game.id}/>
     </>
   )
 }

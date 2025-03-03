@@ -30,6 +30,10 @@ class APIClient<T> {
     public get(id: number | string) {
         return axiosInstance.get<T>(this.endPoint + "/" + id);
     }
+
+    public getWithExtraEndPoints(endPoint: string) {
+        return axiosInstance.get<T>(this.endPoint + "/" + endPoint);
+    }
 }
 
 export default APIClient;
