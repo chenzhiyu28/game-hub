@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import useGameDetailedQuery from "../hooks/useGameDetailQuery";
-import { Heading, Spinner } from "@chakra-ui/react";
+import { GridItem, Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
 import ExpandableComponent from "../components/ExpandableComponent";
 import GameAttributes from "../components/GameAttributes";
 import GameTrailer from "../components/GameTrailer";
@@ -17,16 +17,24 @@ const GameDetailPage = () => {
 
   {isLoading && <Spinner />}
   // if (error || !game) throw error;
-  if (error || !game) return error;
+  if (error || !game) return <p>{error?.message}</p>;
   
   const description = game.description_raw;
   return (
     <>
-      <Heading>{game.name}</Heading>
-      <ExpandableComponent>{description}</ExpandableComponent>
-      <GameAttributes game={game}/>
-      <GameTrailer id={game.id}/>
-      <ScreenShots id={game.id} />
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+        <GridItem>
+          <Heading>{game.name}</Heading>
+          <ExpandableComponent>{description}</ExpandableComponent>
+          <GameAttributes game={game}/>
+        </GridItem>
+
+        <GridItem>
+          <GameTrailer id={game.id}/>
+          <ScreenShots id={game.id}/>
+        </GridItem>
+      </SimpleGrid>
+
     </>
   )
 }
