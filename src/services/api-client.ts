@@ -28,8 +28,7 @@ class APIClient<T> {
     }
 
     public get(id: number | string) {
-        return axiosInstance.get<T>(this.endPoint + "/" + id).
-            then(response => response.data);
+        return axiosInstance.get<T>(this.endPoint + "/" + id);
     }
 }
 

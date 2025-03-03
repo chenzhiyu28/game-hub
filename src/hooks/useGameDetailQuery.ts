@@ -9,7 +9,7 @@ export default function useGameDetailedQuery(id: number) {
 
     const query = useQuery<Game, Error>({
         queryKey: ["game", id],
-        queryFn: () => apiClient.get(id),
+        queryFn: () => apiClient.get(id).then(res => res.data),
     })
 
     return query;
